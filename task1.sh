@@ -7,9 +7,10 @@ fi
 
 if [ $1 != 'ascending' ] && [ $1 != 'descending' ]
 then
-    echo "The order must be one of those values :  ascending/descending"
+    echo "The First argument must be one of those values :  ascending/descending"
     exit 1
 fi
+
 order=$1
 path=$2
 
