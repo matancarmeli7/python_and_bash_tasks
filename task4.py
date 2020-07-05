@@ -2,13 +2,10 @@
 def check_cred_card(credit_card_number):
     counter = 0
 
-    if (len(credit_card_number) != 16 and
-        len(credit_card_number) != 19):
+    if len(credit_card_number) not in {16, 19}:
         return False
 
-    if (credit_card_number[0] != '4' and
-        credit_card_number[0] != '5' and
-        credit_card_number[0] != '6'):
+    if int(credit_card_number[0]) not in {4, 5, 6}:
         return False
     
     for index, value in enumerate(credit_card_number):
