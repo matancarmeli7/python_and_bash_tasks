@@ -15,7 +15,7 @@ def check_if_there_is_4_consecutive_repeated_digits(credit_card):
     return True
 
 # Get list of credit cards and checks if all of them are valide
-def check_cred_card(credit_cards):
+def check_credit_cards_list(credit_cards):
 
     for credit_card in credit_cards:
 
