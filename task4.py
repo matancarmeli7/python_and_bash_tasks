@@ -1,31 +1,30 @@
 #!/usr/bin/python3
-def check_cred_card(credit_card_number):
+import re
+# Check if there is  4 or more consecutive repeated digits in the credit card
+def check_if_there_is_4_consecutive_repeated_digits(credit_card):
     counter = 0
-
-    if len(credit_card_number) not in {16, 19}:
-        return False
-
-    if int(credit_card_number[0]) not in {4, 5, 6}:
-        return False
-    
-    for index, value in enumerate(credit_card_number):
-
-        if value.isdigit():
-            if (int(value) > 9 and
-                int(value) < 0):
-                return False
-        elif value != '-':
-            return False
-        elif index%5 != 4:
-            return False
+    for index, value in list(enumerate(credit_card[:-1])):
         
-        if index == 0:
-            counter += 1
-        elif value == credit_card_number[index-1]:
+        if value == credit_card[index+1]:
             counter += 1
             if counter == 4:
+                print(credit_card)
                 return False
         else:
             counter = 0
-    
+    return True
+
+# Get list of credit cards and checks if all of them are valide
+def check_cred_card(credit_cards):
+
+    for credit_card in credit_cards:
+
+        if re.match(r'[4-6][0-9]{15}$', credit_card):
+            if not check_if_there_is_4_consecutive_repeated_digits(credit_card):
+                return False
+        elif re.match(r'[4-6][0-9]{3}\-[0-9]{4}\-[0-9]{4}\-[0-9]{4}$', credit_card):
+            if not check_if_there_is_4_consecutive_repeated_digits(credit_card):
+                return False
+        else:
+            return False
     return True
