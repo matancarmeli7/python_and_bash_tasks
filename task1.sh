@@ -15,13 +15,13 @@ order=$1
 path=$2
 
 function show_files_in_ascending(){
-    test=`ls $1 | sort -nr`
-    echo $test
+    list_files=`ls $1 | sort -nr`
+    echo $list_files
 }
 
 function show_files_in_descending(){
-    test=`ls $1 | sort -n`
-    echo $test
+    list_files=`ls $1 | sort -n`
+    echo $list_files
 }
 
 if [ $order == "ascending" ]
